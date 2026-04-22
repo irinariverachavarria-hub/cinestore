@@ -1,0 +1,12 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Redirige todo al public/
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# Dentro de public, maneja Laravel normalmente
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
